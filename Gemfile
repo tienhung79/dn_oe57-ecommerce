@@ -48,8 +48,18 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html]
 # gem "image_processing", "~> 1.2"
 
+# Add bcrypt
+gem "bcrypt", "3.1.13"
+
+# Use i18n
+gem "rails-i18n"
+
+# Gem faker
+gem "faker"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html
+  gem "byebug"
   gem "debug", platforms: %i(mri mingw x64_mingw)
   gem "rubocop", "~> 1.26", require: false
   gem "rubocop-checkstyle_formatter", require: false
