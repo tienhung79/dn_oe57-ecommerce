@@ -1,0 +1,39 @@
+<!-- Header -->
+<div class="header__fixed">
+  <div class="header">
+    <div class="grid">
+      <div class="header__content">
+        <div class="header__left">
+          <%= image_tag("logos/logo7.png", :alt => "Header logo", :class => "header__left-logo") %>
+        </div>
+        <div class="header__mid">
+          <form>
+            <div class="d-flex">
+              <input type="text" class="form-control">
+              <button type="submit" class="header_btn_search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="fs-3">
+            <%= link_to "En", locale:"en" %> |
+            <%= link_to "Vi", locale:"vi" %>
+          </div>
+        <div class="header__right">
+          <%= image_tag("logos/logo2.png", :alt => "Cart", id: "cart", :class => "user_menu_logo me-3") %>
+          <%= image_tag("logos/account.png", :alt => "User menu", id: "account", :class => "user_menu_logo") %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Nav -->
+  <div class="nav">
+    <ul class="nav-menu">
+      <li class="nav-menu-item text-uppercase"><%= t("about_us") %></li>
+      <li class="nav-menu-item text-uppercase"><%= t("products") %></li>
+      <li class="nav-menu-item text-uppercase"><%= t("contact") %></li>
+      <li class="nav-menu-item text-uppercase"><%= t("support") %></li>
+    </ul>
+  </div>
+</div>
