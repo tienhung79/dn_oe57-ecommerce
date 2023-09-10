@@ -1,0 +1,15 @@
+class CreateOrders < ActiveRecord::Migration[7.0]
+  def change
+    create_table :orders do |t|
+      t.string :reciver_name
+      t.string :reciver_address
+      t.string :reciver_phone
+      t.integer :total_price
+      t.integer :status
+      t.boolean :is_paid
+      t.references :user, null: false, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end
