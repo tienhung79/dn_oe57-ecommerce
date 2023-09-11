@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
   # app/controllers/application_controller.rb
   before_action :set_locale
   def set_locale

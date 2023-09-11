@@ -54,11 +54,10 @@ gem "rails-i18n"
 # Add bcrypt
 gem "bcrypt", "3.1.13"
 
-# Use i18n
-gem "rails-i18n"
-
 # Gem faker
 gem "faker"
+
+gem "config"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html
@@ -90,3 +89,9 @@ end
 gem "bootstrap"
 gem "font-awesome-sass"
 gem "jquery-rails"
+
+gem "active_storage_validations"
+gem "image_processing"
+gem "mini_magick"
+
+gem "pagy"
