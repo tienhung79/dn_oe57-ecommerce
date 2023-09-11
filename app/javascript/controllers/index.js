@@ -9,3 +9,10 @@ eagerLoadControllersFrom("controllers", application)
 // Lazy load controllers as they appear in the DOM (remember not to preload controllers in import map!)
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
 // lazyLoadControllersFrom("controllers", application)
+
+$("#account").click(function() {
+  $("#user-menu").addClass("open-user-menu")
+})
+$("#btnClose").click(function() {
+  $("#user-menu").removeClass("open-user-menu")
+})

@@ -8,9 +8,16 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
   </head>
 
   <body>
+    <%= render "layouts/header" %>
     <%= yield %>
+    <%= render "layouts/footer" %>
+    <%= render "layouts/user_menu" %>
+
+    <%= javascript_include_tag 'jquery.min' %>
+    <%= javascript_include_tag 'bootstrap.min' %>
   </body>
 </html>
