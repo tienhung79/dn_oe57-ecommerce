@@ -4,10 +4,10 @@
   </div>
   <div class="menu__right-category px-2">
     <% @childrens.each do |children| %>
-      <ul class="text-danger fs-2 fw-bold px-5"> <%= children.name %>
+      <ul class="text-danger fs-2 fw-bold px-5"> <%= link_to children.name, products_path(id: children.id), class: "text-decoration-none text-danger" %>
         <% @children_childrens.each do |children_children| %>
           <% if children.id == children_children.parent_id %>
-            <li class="menu__right-category-item fs-3 fw-normal"><%= children_children.name %></li>
+            <li class="menu__right-category-item fs-3 fw-normal"><%= link_to children_children.name, products_path(id: children_children.id), class: "text-decoration-none menu__right-category-item" %></li>
           <% end %>
         <% end %>
       </ul>
