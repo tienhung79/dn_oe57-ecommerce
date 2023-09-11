@@ -28,3 +28,7 @@ vi:
   back_to_shop: "Trở lại cửa hàng"
   pay: "Thanh toán"
   bill: "Hóa đơn"
+  log_in: "Đăng nhập"
+  password: "Mật khẩu"
+  log_out: "Đăng xuất"
+  invalid_email_password_combination: "Tài khoản hoặc mật khẩu không hợp lệ"

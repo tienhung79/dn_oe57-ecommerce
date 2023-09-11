@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include SessionHelper
+
   include Pagy::Backend
   # app/controllers/application_controller.rb
   include Pagy::Backend
