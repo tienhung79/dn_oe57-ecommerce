@@ -4,7 +4,9 @@
     <div class="grid">
       <div class="header__content">
         <div class="header__left">
-          <%= image_tag("logos/logo7.png", :alt => "Header logo", :class => "header__left-logo") %>
+          <%= link_to root_path, class: "text-decoration-none" do %>
+            <%= image_tag("logos/logo7.png", :alt => "Header logo", :class => "header__left-logo") %>
+          <% end %>
         </div>
         <div class="header__mid">
           <form>
@@ -21,7 +23,9 @@
             <%= link_to "Vi", locale:"vi" %>
           </div>
         <div class="header__right">
-          <%= image_tag("logos/logo2.png", :alt => "Cart", id: "cart", :class => "user_menu_logo me-3") %>
+          <%= link_to cart_index_path, class: "text-decoration-none" do %>
+            <%= image_tag("logos/logo2.png", :alt => "Cart", id: "cart", :class => "user_menu_logo me-3") %>
+          <% end %>
           <%= image_tag("logos/account.png", :alt => "User menu", id: "account", :class => "user_menu_logo") %>
         </div>
       </div>
