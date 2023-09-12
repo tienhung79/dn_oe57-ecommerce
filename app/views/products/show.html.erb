@@ -1,0 +1,77 @@
+<!-- Container -->
+<div class="container my-5">
+  <div class="grid">
+    <div class="grid__row">
+      <div class="col-1">
+      </div>
+      <div class="col-7 p-3">
+        <div class="product_container">
+          <div class="product_detail">
+            <div class="product_img col-3">
+              <%= image_tag(@product.image, alt: t("product_item"), class: "home_product_item_image") %>
+            </div>
+            <div class="product_info mt-3 col-5">
+                <h2 class="mb-3"><%= @product.name %></h2>
+                <div class="home-product-item__rating mb-4">
+                  <% for i in (1..@product.rating) do %>
+                    <i class="home-product-item__star--gold fas fa-star fs-3"></i>
+                  <% end %>
+                  <% for i in (1..(5 - @product.rating)) do %>
+                    <i class="home-product-item__star fas fa-star fs-3"></i>
+                  <% end %>
+                </div>
+                <span id="coin"><%= @product.price %></span>
+                <span class="fs-3"><%= t("quantity") %>: <%= @product.quantity %></span>
+            </div>
+            <div class="col-4">
+              <div class="d-flex align-items-center justify-content-center h-100">
+                <div>
+                  <button class="btn-add-to-cart"><%= t("add_to_cart") %></button>
+                  <button class="btn-buy-now"><%= t("buy_now") %></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <!-- CHI TIẾT SẢN PHẨM -->
+          <div class="product_detail-2">
+            <div class="product_detail-2-header">
+              <h2><%= t("product_description") %></h2>
+            </div>
+            <div class="product_detail-2-info">
+              <p class="fs-4">
+                <%= @product.description %>
+              </p>
+            </div>
+          </div>
+          <!-- MÔ TẢ SẢN PHẨM -->
+          <div class="product_detail-2">
+            <div class="product_detail-2-header">
+              <h2><%= t("feedback") %></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 p-3">
+        <div class="menu__right">
+          <div class="menu__right-header">
+            <h3><%= t("categories") %></h3>
+          </div>
+          <div class="menu__right-category px-2">
+            <% @childrens.each do |children| %>
+              <ul class="text-danger fs-2 fw-bold px-5"> <%= children.name %>
+                <% @children_childrens.each do |children_children| %>
+                  <% if children.id == children_children.parent_id %>
+                    <li class="menu__right-category-item fs-3 fw-normal"><%= children_children.name %></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-1">
+      </div>
+    </div>
+  </div>
+</div>

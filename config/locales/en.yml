@@ -17,3 +17,8 @@ en:
   saved: "Saved"
   logout: "Log out"
   product_item: "Product item"
+  product_description: "Product description"
+  feedback: "Feedback"
+  buy_now: "Buy now"
+  add_to_cart: "Add to cart"
+  quantity: "Quantity"

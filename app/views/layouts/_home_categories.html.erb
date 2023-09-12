@@ -1,10 +1,16 @@
-<h1 class="text-uppercase fw-bold"><%= t("categories") %></h1>
-<ul class="categories_nav">
-  <% @categories.each do |category| %>
-    <% if category.parent_id == 1 %>
-      <li class="categories_nav-item-1"><%= category.name %></li>
-    <% else %>
-      <li class="categories_nav-item-2 ms-3"><%= category.name %></li>
+<div class="menu__right h-98">
+  <div class="menu__right-header">
+    <h3><%= t("categories") %></h3>
+  </div>
+  <div class="menu__right-category px-2">
+    <% @childrens.each do |children| %>
+      <ul class="text-danger fs-2 fw-bold px-5"> <%= children.name %>
+        <% @children_childrens.each do |children_children| %>
+          <% if children.id == children_children.parent_id %>
+            <li class="menu__right-category-item fs-3 fw-normal"><%= children_children.name %></li>
+          <% end %>
+        <% end %>
+      </ul>
     <% end %>
-  <% end %>
-</ul>
+  </div>
+</div>
