@@ -48,6 +48,7 @@ class ProductsController < ApplicationController
   def search_by_category
     @children_categories = Category.find_id_or_parent(params[:id])
     children_category_id = @children_categories.pluck(:id)
+    byebug
     search_results = if @children_categories.length == 1
                        Product.filter_by_category_id(params[:id])
                      else

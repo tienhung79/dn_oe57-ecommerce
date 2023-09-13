@@ -41,7 +41,6 @@ vi:
   user_not_found: "Không tìm thấy người dùng"
   rating: "Đánh giá"
   content: "Nội dung đánh giá"
-  create: "Tạo mới"
   activerecord:
     models:
       order: "Đơn hàng"
