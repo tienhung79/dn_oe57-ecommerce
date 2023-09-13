@@ -16,5 +16,4 @@ Rails.application.routes.draw do
   get "remove_to_cart", to: "cart#remove_to_cart"
 
   resources :orders
-
 end

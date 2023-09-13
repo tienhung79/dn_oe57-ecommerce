@@ -1,0 +1,14 @@
+<%= link_to order_detail.product, class: "text-decoration-none" do %>
+  <div class="row d-flex justify-content-between align-items-center my-3 text-black">
+    <div class="col-md-1 col-lg-1 col-xl-1">
+      <%= image_tag(order_detail.product_image, alt: t("product_item"), class: "img-fluid rounded-3") %>
+    </div>
+    <div class="col-md-6 col-lg-6 col-xl-6">
+      <p class="lead fw-normal mb-2 fs-5"><%= order_detail.product.category_name %></p>
+      <p class="lead fw-normal mb-2 fs-4"><%= order_detail.product_name %></p>
+    </div>
+    <div class="col-md-3 col-lg-3 col-xl-3">
+      <p class="lead fw-normal mb-2 fs-4">x <%= order_detail.quantity_product %></p>
+    </div>
+  </div>
+<% end %>
