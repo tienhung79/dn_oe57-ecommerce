@@ -25,10 +25,14 @@
             </div>
             <div class="col-4">
               <div class="d-flex align-items-center justify-content-center h-100">
-                  <%= form_tag add_to_cart_path, remote: true, method: :GET do %>
-                    <%= hidden_field_tag :id, @product.id %>
-                    <%= submit_tag t("add_to_cart"), class: "btn-add-to-cart" %>
-                  <% end %>
+              <% if session[:cart]&.dig(@product.id.to_s).present?%>
+                <%= "Sản phẩm đã có trong giỏ hàng"%>
+              <%else%>
+                <%= form_tag add_to_cart_path, remote: true, method: :GET do %>
+                  <%= hidden_field_tag :id, @product.id %>
+                  <%= submit_tag t("add_to_cart"), class: "btn-add-to-cart" %>
+                <% end %>
+              <% end %>
               </div>
             </div>
           </div>

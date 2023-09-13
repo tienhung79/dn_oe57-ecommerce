@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-md-12 col-md-offset-3 order__form">
+    <%= form_for @feedback, url: feedbacks_path  do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      <%= f.label :content, class: "fs-4 mt-3 mb-2" %><%= f.text_area :content, class: "form-control" %>
+      <% (1..5).each do |rating| %>
+        <%= f.radio_button :rating, rating %> <%= rating %> điểm
+      <% end %>
+      <%= f.hidden_field :product_id, value: @product.id %>
+      <%= f.submit t("rating"), class: "btn btn-primary mt-4 order__btn" %>
+    <% end %>
+  </div>
+</div>

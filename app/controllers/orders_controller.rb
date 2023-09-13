@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
       @order.save!
       create_order_detail @order
       update_quantity_products
-      session[:cart].clear
+      clear_cart
       flash[:success] = t("success")
       redirect_to root_path
     end
@@ -32,6 +32,10 @@ class OrdersController < ApplicationController
                                   :reciver_address,
                                   :reciver_phone,
                                   :total_price, :status
+  end
+
+  def clear_cart
+    session[:cart].clear
   end
 
   def load_order

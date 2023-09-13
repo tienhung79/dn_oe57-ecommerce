@@ -39,6 +39,8 @@ vi:
   order: "Đặt hàng"
   success: "Thành công"
   user_not_found: "Không tìm thấy người dùng"
+  rating: "Đánh giá"
+  content: "Nội dung đánh giá"
   activerecord:
     models:
       order: "Đơn hàng"

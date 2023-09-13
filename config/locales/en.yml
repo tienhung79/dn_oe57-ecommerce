@@ -58,3 +58,5 @@ en:
   awaiting: "Awaiting"
   confirmed: "Confirmed"
   canceled: "Canceled"
+  rating: "Evaluate"
+  content: "Content of feedback"
