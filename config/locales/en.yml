@@ -33,3 +33,5 @@ en:
   log_out: "Log out"
   invalid_email_password_combination: "Invalid email password combination"
   no_product_display: "There's no prodcut to be displayed"
+  invalid_quantity: "Maximum number of products remaining in stock has been reached"
+  product_not_found_reload_page: "Product not found, please reload page."
