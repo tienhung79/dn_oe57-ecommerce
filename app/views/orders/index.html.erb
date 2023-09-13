@@ -1,0 +1,20 @@
+<section class="h-100" style="background-color: #eee;">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div class="d-flex align-items-center">
+            <%= link_to root_path, class: "text-decoration-none" do %>
+              <i class="fa-solid fa-arrow-left fs-1 me-4 text-black"></i>
+            <% end %>
+            <h3 class="fw-normal mb-0 text-black text-uppercase"><%= t("my_purchase") %></h3>
+          </div>
+        </div>
+
+         <%= (render @orders) || t("no_order_display") %>
+
+      </div>
+    </div>
+  </div>
+</section>

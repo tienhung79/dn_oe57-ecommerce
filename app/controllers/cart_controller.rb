@@ -28,6 +28,7 @@ class CartController < ApplicationController
     end
     respond_to do |format|
       handle_quantity_warning
+
       format.html{redirect_to cart_index_path}
       format.js
     end

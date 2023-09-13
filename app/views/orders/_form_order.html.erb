@@ -1,9 +1,13 @@
-<%= form_for @order, url: orders_path  do |f| %>
-  <%= render partial:"shared/error_messages", locals: { object: @order } %>
-  <%= f.label :reciver_name %><%= f.text_field :reciver_name %>
-  <%= f.label :reciver_address %><%= f.text_field :reciver_address %>
-  <%= f.label :reciver_phone %><%= f.text_field :reciver_phone %>
-  <%= f.hidden_field :total_price, value: @total_price %>
-  <%= f.hidden_field :status, value: 1 %>
-  <%= f.submit t("order"), class: "btn btn-primary" %>
-<% end %>
+<div class="row">
+  <div class="col-md-12 col-md-offset-3 order__form">
+    <%= form_for @order, url: orders_path  do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      <%= f.label :reciver_name, class: "fs-4 mt-3 mb-2" %><%= f.text_field :reciver_name, class: "form-control" %>
+      <%= f.label :reciver_address, class: "fs-4 mt-3 mb-2" %><%= f.text_field :reciver_address, class: "form-control" %>
+      <%= f.label :reciver_phone, class: "fs-4 mt-3 mb-2" %><%= f.text_field :reciver_phone, class: "form-control" %>
+      <%= f.hidden_field :total_price, value: @total_price %>
+      <%= f.hidden_field :status, value: "awaiting" %>
+      <%= f.submit t("order"), class: "btn btn-primary mt-4 order__btn" %>
+    <% end %>
+  </div>
+</div>

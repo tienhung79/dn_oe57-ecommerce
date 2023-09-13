@@ -15,10 +15,12 @@
                 <span><%= t("home") %></span>
             </div>
             <hr>
-            <div class="user-menu-list-item">
-                <%= image_tag("icon/list.PNG", :alt => "") %>
-                <span><%= t("my_order") %></span>
-            </div>
+            <%= link_to orders_path, class: "text-decoration-none" do %>
+                <div class="user-menu-list-item">
+                    <%= image_tag("icon/list.PNG", :alt => "") %>
+                    <span><%= t("my_order") %></span>
+                </div>
+            <% end %>
             <hr>
             <div class="user-menu-list-item">
                 <%= image_tag("icon/favourite.PNG", :alt => "") %>

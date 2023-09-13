@@ -5,4 +5,3 @@ orders:
   length_30: 30
   length_50: 50
   regex: !ruby/regexp /\A\d{10}\z/
-
