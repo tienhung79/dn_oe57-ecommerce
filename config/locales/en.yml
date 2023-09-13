@@ -32,3 +32,4 @@ en:
   password: "Password"
   log_out: "Log out"
   invalid_email_password_combination: "Invalid email password combination"
+  no_product_display: "There's no prodcut to be displayed"

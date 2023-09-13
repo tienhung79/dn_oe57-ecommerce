@@ -1,5 +1,5 @@
 <!-- Container -->
-<div class="container my-5">
+<div class="container my-5" >
   <div class="grid">
     <div class="grid__row">
       <div class="col-1">
@@ -25,10 +25,12 @@
             </div>
             <div class="col-4">
               <div class="d-flex align-items-center justify-content-center h-100">
-                <div>
-                  <button class="btn-add-to-cart"><%= t("add_to_cart") %></button>
-                  <button class="btn-buy-now"><%= t("buy_now") %></button>
-                </div>
+                 <div id= "detail_product">
+                  <%= form_tag add_to_cart_path, remote: true, method: :GET do %>
+                    <%= hidden_field_tag :id, @product.id %>
+                    <%= submit_tag t("add_to_cart"), class: "btn-add-to-cart" %>
+                  <% end %>
+                  </div>
               </div>
             </div>
           </div>
@@ -54,20 +56,7 @@
       </div>
       <div class="col-3 p-3">
         <div class="menu__right">
-          <div class="menu__right-header">
-            <h3><%= t("categories") %></h3>
-          </div>
-          <div class="menu__right-category px-2">
-            <% @childrens.each do |children| %>
-              <ul class="text-danger fs-2 fw-bold px-5"> <%= children.name %>
-                <% @children_childrens.each do |children_children| %>
-                  <% if children.id == children_children.parent_id %>
-                    <li class="menu__right-category-item fs-3 fw-normal"><%= children_children.name %></li>
-                  <% end %>
-                <% end %>
-              </ul>
-            <% end %>
-          </div>
+          <%= render "layouts/home_categories" %>
         </div>
       </div>
       <div class="col-1">
