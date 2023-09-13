@@ -1,0 +1,10 @@
+<%= form_tag(products_path, method: :get) do %>
+  <% if params[:q].present? %>
+    <%= text_field_tag 'q[name_cont]', params[:q][:name_cont], placeholder: 'Tên sản phẩm' %>
+    <%= text_field_tag 'q[description_cont]', params[:q][:description_cont], placeholder: 'Mô tả sản phẩm' %>
+  <% else %>
+    <%= text_field_tag 'q[name_cont]', nil, placeholder: 'Tên sản phẩm' %>
+    <%= text_field_tag 'q[description_cont]', nil, placeholder: 'Mô tả sản phẩm' %>
+  <% end %>
+  <%= submit_tag "Search", class: "header_btn_search" %>
+<% end %>
