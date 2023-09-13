@@ -28,3 +28,7 @@ en:
   back_to_shop: "Back to shop"
   pay: "Pay"
   bill: "Bill"
+  log_in: "Log in"
+  password: "Password"
+  log_out: "Log out"
+  invalid_email_password_combination: "Invalid email password combination"

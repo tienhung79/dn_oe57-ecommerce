@@ -8,7 +8,6 @@
             <%= image_tag("logos/logo7.png", :alt => "Header logo", :class => "header__left-logo") %>
           <% end %>
         </div>
-        
         <div class="fs-3">
             <%= link_to "En", locale:"en" %> |
             <%= link_to "Vi", locale:"vi" %>
@@ -17,7 +16,11 @@
           <%= link_to cart_index_path, class: "text-decoration-none" do %>
             <%= image_tag("logos/logo2.png", :alt => "Cart", id: "cart", :class => "user_menu_logo me-3") %>
           <% end %>
-          <%= image_tag("logos/account.png", :alt => "User menu", id: "account", :class => "user_menu_logo") %>
+          <% if logged_in? %>
+            <%= image_tag("logos/account.png", :alt => "User menu", id: "account", :class => "user_menu_logo") %>
+          <% else %>
+            <li><%= link_to t("log_in"), login_path %></li>
+          <% end %>
         </div>
       </div>
     </div>

@@ -1,11 +1,12 @@
 <!-- user menu -->
+<% if logged_in? %>
     <div class="user-menu " id="user-menu">
         <div class="btn-close">
             <%= image_tag("icon/close.png", :alt => "Close", :id => "btnClose") %>
         </div>
         <div class="user-menu-profile">
             <%= image_tag("icon/avatar1.png", :alt => "Avater user") %>
-            <Span class="user-name">Hoang Phuc Tan</Span>
+            <Span class="user-name"><%= @current_user.name %></Span>
         </div>
         <hr>
         <div class="user-menu-list">
@@ -26,9 +27,10 @@
             <hr>
             <div class="user-menu-list-item">
                 <%= image_tag("icon/logout.PNG", :alt => "") %>
-                <span><%= t("logout") %></span>
+                <span><%= link_to t("log_out"),logout_path, data: { "turbo-method": :delete } %></span>
             </div>
 
         </div>
     </div>
+<% end %>
     <!-- end user menu -->
