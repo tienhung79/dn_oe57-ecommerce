@@ -59,6 +59,9 @@ gem "faker"
 
 gem "config"
 
+# Gem pagy
+gem "pagy"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html
   gem "byebug"
@@ -93,5 +96,3 @@ gem "jquery-rails"
 gem "active_storage_validations"
 gem "image_processing"
 gem "mini_magick"
-
-gem "pagy"

@@ -28,13 +28,13 @@
   width: 500px;
   margin-top: 30px;
   margin-left: -110px;
+  display: none;
 }
 .header__mid {
   width: 30%;
 }
 .header__mid form input {
   height: 35px;
-  border: none;
   border-radius: 0;
 }
 .header_btn_search {
@@ -428,7 +428,7 @@ text-align: center;
 }
 .menu__right-category-item{
   padding: 8px 0;
-  color: #545454;
+  color: #545454 !important;
 }
 .menu__right-category-item:hover{
   text-decoration: underline;
@@ -543,7 +543,7 @@ text-align: center;
     height: 100vh !important;
   }
 }
-  
+
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
   font-size: 1rem;
   line-height: 2.15;

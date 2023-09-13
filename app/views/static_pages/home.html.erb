@@ -8,7 +8,15 @@
       </div>
       <div class="col-10">
         <div class="grid">
+        <div class="d-flex justify-content-between align-items-center">
           <h1 class="text-danger text-uppercase fw-bold"><%= t("products") %></h1>
+          <div class="header__mid w-auto">
+              <%= form_tag(products_path, method: :get) do %>
+                <%= text_field_tag :name %>
+                <%= submit_tag 'Search',class: "header_btn_search"  %>
+              <% end %>
+          </div>
+        </div>
           <div class="grid__row">
             <% @products.each do |product| %>
               <div class="grid__column-1-5">
