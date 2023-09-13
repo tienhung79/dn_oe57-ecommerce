@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
       @order.save!
       create_order_detail @order
       update_quantity_products
-      session[:cart].clear
+      clear_cart
       flash[:success] = t("success")
       redirect_to root_path
     end
@@ -27,6 +27,11 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def clear_cart
+    session[:cart].clear
+  end
+
   def order_params
     params.require(:order).permit :reciver_name,
                                   :reciver_address,
