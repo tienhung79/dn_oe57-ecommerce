@@ -35,3 +35,15 @@ vi:
   no_product_display: "Không có sản phẩm nào để hiển thị"
   invalid_quantity: "Đã đạt tối da số lượng sản phẩm còn lại trong kho"
   product_not_found_reload_page: "Không tìm thấy sản phẩm, vui lòng tải lại trang."
+  error: "Lỗi"
+  order: "Đặt hàng"
+  success: "Thành công"
+  user_not_found: "Không tìm thấy người dùng"
+  activerecord:
+    models:
+      order: "Đơn hàng"
+    attributes:
+      order:
+        reciver_name: "Tên nhận hàng"
+        reciver_address: "Địa chỉ nhận hàng"
+        reciver_phone: "Số điện thoại nhận hàng"

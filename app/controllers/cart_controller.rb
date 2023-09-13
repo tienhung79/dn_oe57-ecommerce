@@ -1,22 +1,19 @@
 class CartController < ApplicationController
+  include CartHelper
+
   before_action :logged_in_user
   before_action :load_product, only: %i(add_to_cart remove_to_cart
     decrease_quantity_cart increase_quantity_cart)
-  before_action :total_price, only: :index
   after_action :total_price, only: %i(add_to_cart remove_to_cart
     decrease_quantity_cart increase_quantity_cart)
+  before_action :load_product_in_cart, :total_price, only: :index
 
-  def index
-    @cart = session[:cart] || {}
-    @products = Product.find_id(@cart.keys)
-  end
+  def index; end
 
   def add_to_cart
     session[:cart] ||= {}
-
     session[:cart][@product.id.to_s] ||= 0
     session[:cart][@product.id.to_s] += 1
-
     respond_to do |format|
       format.html{redirect_to @product}
       format.js
@@ -24,24 +21,20 @@ class CartController < ApplicationController
   end
 
   def increase_quantity_cart
-    if session[:cart].has_key?(@product.id.to_s)
+    if session[:cart].key?(@product.id.to_s)
       session[:cart][@product.id.to_s] += 1
     else
       flash[:danger] = t("product_not_found_reload_page")
     end
-
     respond_to do |format|
-      if session[:cart][@product.id.to_s] == @product.quantity
-        flash[:warning] = t("invalid_quantity")
-      end
-
+      handle_quantity_warning
       format.html{redirect_to cart_index_path}
       format.js
     end
   end
 
   def decrease_quantity_cart
-    if session[:cart].has_key?(@product.id.to_s)
+    if session[:cart].key?(@product.id.to_s)
       session[:cart][@product.id.to_s] -= 1
     else
       flash[:danger] = t("product_not_found_reload_page")
@@ -62,6 +55,7 @@ class CartController < ApplicationController
   end
 
   private
+
   def load_product
     @product = Product.find_by id: params[:id]
     return if @product
@@ -78,16 +72,9 @@ class CartController < ApplicationController
     redirect_to login_url
   end
 
-  def total_price
-    @total_price = 0
-    @cart = session[:cart] || {}
-    @cart.each do |key, value|
-      product = Product.find_by id: key
-      if product
-        @total_price += product.price * value
-      else
-        session[:cart].delete(key)
-      end
-    end
+  def handle_quantity_warning
+    return unless session[:cart][@product.id.to_s] == @product.quantity
+
+    flash[:warning] = t("invalid_quantity")
   end
 end

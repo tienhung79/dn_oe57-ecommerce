@@ -25,13 +25,10 @@
             </div>
             <div class="col-4">
               <div class="d-flex align-items-center justify-content-center h-100">
-                <div>
                   <%= form_tag add_to_cart_path, remote: true, method: :GET do %>
                     <%= hidden_field_tag :id, @product.id %>
                     <%= submit_tag t("add_to_cart"), class: "btn-add-to-cart" %>
                   <% end %>
-                  <button class="btn-buy-now"><%= t("buy_now") %></button>
-                </div>
               </div>
             </div>
           </div>

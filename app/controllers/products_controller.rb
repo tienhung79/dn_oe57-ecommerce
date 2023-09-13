@@ -1,6 +1,4 @@
 class ProductsController < ApplicationController
-  include CategoriesHelper
-
   before_action :load_info_categories, only: %i(show index)
   before_action :load_product, only: %i(show)
 
