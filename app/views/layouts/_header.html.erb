@@ -13,7 +13,8 @@
             <%= link_to "Vi", locale:"vi" %>
           </div>
         <div class="header__right">
-          <%= link_to cart_index_path, class: "text-decoration-none" do %>
+          <%= link_to cart_index_path, class: "text-decoration-none" do %> <span>
+            <%= session[:cart]&.length %></span>
             <%= image_tag("logos/logo2.png", :alt => "Cart", id: "cart", :class => "user_menu_logo me-3") %>
           <% end %>
           <% if logged_in? %>

@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   resources :products
 
-  get 'cart/index'
-
   get "/login", to: "session#new"
   post "/login", to: "session#create"
   delete "/logout", to: "session#destroy"
+
+  resources :cart, only: :index
+  get "/add_to_cart", to: "cart#add_to_cart"
 end
