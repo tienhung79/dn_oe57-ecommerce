@@ -9,7 +9,11 @@ class Product < ApplicationRecord
                            where("name LIKE ?", "%#{name}%")
                          }
   scope :filter_by_category_id, lambda {|category_id|
-    where(category_id:)
+                                  where(category_id:)
+                                }
+
+  scope :find_id, lambda {|id|
+    where(id:)
   }
   scope :find_id, lambda {|id|
                     where(id:)

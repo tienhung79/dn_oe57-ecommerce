@@ -33,3 +33,5 @@ vi:
   log_out: "Đăng xuất"
   invalid_email_password_combination: "Tài khoản hoặc mật khẩu không hợp lệ"
   no_product_display: "Không có sản phẩm nào để hiển thị"
+  invalid_quantity: "Đã đạt tối da số lượng sản phẩm còn lại trong kho"
+  product_not_found_reload_page: "Không tìm thấy sản phẩm, vui lòng tải lại trang."
