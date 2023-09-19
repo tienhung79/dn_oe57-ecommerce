@@ -8,10 +8,13 @@ Rails.application.routes.draw do
   post "/login", to: "session#create"
   delete "/logout", to: "session#destroy"
 
-  resources :cart, only: :index 
+  resources :cart, only: :index
 
   get "add_to_cart", to: "cart#add_to_cart"
   get "increase_to_cart", to: "cart#increase_quantity_cart"
   get "decrease_to_cart", to: "cart#decrease_quantity_cart"
   get "remove_to_cart", to: "cart#remove_to_cart"
+
+  resources :orders
+
 end

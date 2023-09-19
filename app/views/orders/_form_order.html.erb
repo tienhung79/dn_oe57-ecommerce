@@ -1,0 +1,9 @@
+<%= form_for @order, url: orders_path  do |f| %>
+  <%= render partial:"shared/error_messages", locals: { object: @order } %>
+  <%= f.label :reciver_name %><%= f.text_field :reciver_name %>
+  <%= f.label :reciver_address %><%= f.text_field :reciver_address %>
+  <%= f.label :reciver_phone %><%= f.text_field :reciver_phone %>
+  <%= f.hidden_field :total_price, value: @total_price %>
+  <%= f.hidden_field :status, value: 1 %>
+  <%= f.submit t("order"), class: "btn btn-primary" %>
+<% end %>

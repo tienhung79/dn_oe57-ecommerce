@@ -1,6 +1,4 @@
 class StaticPagesController < ApplicationController
-  include CategoriesHelper
-
   before_action :load_info_categories, only: :home
 
   def home

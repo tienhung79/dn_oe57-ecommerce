@@ -35,3 +35,8 @@ en:
   no_product_display: "There's no prodcut to be displayed"
   invalid_quantity: "Maximum number of products remaining in stock has been reached"
   product_not_found_reload_page: "Product not found, please reload page."
+  error: "Error"
+  order: "Order"
+  please_log_in: "Please log in"
+  success: "Success"
+  user_not_found:  "User not found!"

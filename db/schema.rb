@@ -74,7 +74,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_055242) do
     t.string "reciver_phone"
     t.integer "total_price"
     t.integer "status"
-    t.boolean "is_paid"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
