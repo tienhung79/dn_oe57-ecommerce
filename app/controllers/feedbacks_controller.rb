@@ -18,7 +18,7 @@ class FeedbacksController < ApplicationController
       @feedback.save!
       update_rating_product @product
       flash[:success] = t("success")
-      redirect_to root_path
+      redirect_to @product
     end
   rescue ActiveRecord::RecordInvalid
     render :new, status: :unprocessable_entity

@@ -3,7 +3,9 @@ class ProductsController < ApplicationController
   before_action :load_product, only: %i(show)
   before_action :admin_user, :load_category, only: %i(new create)
 
-  def show; end
+  def show
+    @feedbacks = @product.feedbacks.newest
+  end
 
   def new
     @product = Product.new
