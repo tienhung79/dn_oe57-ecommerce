@@ -27,5 +27,7 @@ Rails.application.routes.draw do
       patch "cancel", to: "orders#cancel"
       get "reason", to: "orders#reason"
     end
+
+    resources :products
   end
 end

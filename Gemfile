@@ -59,8 +59,14 @@ gem "faker"
 
 gem "config"
 
+# Gem ransack
+gem 'ransack'
+
 # Gem pagy
 gem "pagy"
+
+#Gem sidekiq
+gem "sidekiq"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html

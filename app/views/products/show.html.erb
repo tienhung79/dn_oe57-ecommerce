@@ -25,16 +25,26 @@
             </div>
             <div class="col-4">
               <div class="d-flex align-items-center justify-content-center h-100">
-              <% if session[:cart]&.dig(@product.id.to_s).present?%>
-                <div class="bg-secondary px-5 py-3 text-white fs-5 fw-normal rounded-pill">
-                  <%= t("product_already_in_the_cart") %>
-                </div>
-              <%else%>
-                <%= form_tag add_to_cart_path, remote: true, method: :GET do %>
-                  <%= hidden_field_tag :id, @product.id %>
-                  <%= submit_tag t("add_to_cart"), class: "btn-add-to-cart" %>
+
+              <% if @product.quantity > 0 %>
+
+                <% if session[:cart]&.dig(@product.id.to_s).present?%>
+                  <div class="bg-secondary px-5 py-3 text-white fs-5 fw-normal rounded-pill">
+                    <%= t("product_already_in_the_cart") %>
+                  </div>
+                <%else%>
+                  <%= form_tag add_to_cart_path, remote: true, method: :GET do %>
+                    <%= hidden_field_tag :id, @product.id %>
+                    <%= submit_tag t("add_to_cart"), class: "btn-add-to-cart" %>
+                  <% end %>
                 <% end %>
+
+              <%else%>
+                  <div class="bg-danger px-5 py-3 text-white fs-5 fw-normal rounded-pill">
+                    <%= "Sản phẩm tạm thời hết hàng" %>
+                  </div>
               <% end %>
+
               </div>
             </div>
           </div>
@@ -72,8 +82,6 @@
                             <i class="home-product-item__star fas fa-star"></i>
                           <% end %>
                         </div>
-
-
                         <span class="text-secondary fs-5"><%= feedback.content %></span>
                       </div>
                     </div>

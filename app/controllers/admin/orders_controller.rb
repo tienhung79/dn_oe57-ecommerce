@@ -1,13 +1,14 @@
 class Admin::OrdersController < ApplicationController
   before_action :is_admin?
   before_action :load_order, only: %i(confirm cancel reason)
+  before_action :check_status, only: %i(confirm cancel)
 
   def index
     @pagy, @orders = pagy(Order.newest, items: Settings.orders.number_of_page_5)
   end
 
   def confirm
-    if @order.update(status: "confirmed")
+    if @order.update(status: :confirmed)
       UserMailer.confirm_order(@order).deliver_now
       redirect_to admin_orders_path, notice: t("order_has_been_confirmed")
     else
@@ -21,7 +22,7 @@ class Admin::OrdersController < ApplicationController
   def cancel
     ActiveRecord::Base.transaction do
       if params[:reason].present?
-        @order.update(status: "canceled")
+        @order.update(status: :canceled)
         return_quantity_products @order
         UserMailer.cancel_order(@order, params[:reason]).deliver_now
         redirect_to admin_orders_path, notice: t("order_has_been_cancelled")
@@ -58,5 +59,12 @@ class Admin::OrdersController < ApplicationController
       order_detail.product.quantity += order_detail.quantity_product
       order_detail.product.save!
     end
+  end
+
+  def check_status
+    return if @order.awaiting?
+
+    flash[:danger] = t("can_not_update_order")
+    redirect_to admin_orders_path
   end
 end
