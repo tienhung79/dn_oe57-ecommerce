@@ -1,8 +1,15 @@
 class OrdersController < ApplicationController
   include CartHelper
 
-  before_action :logged_in_user, :load_product_in_cart, :total_price,
-                only: :create
+  before_action :logged_in_user
+  before_action :load_product_in_cart, :total_price, only: :create
+  before_action :load_order, only: :show
+
+  def index
+    @orders = current_user.orders.includes(:order_details)
+  end
+
+  def show; end
 
   def create
     ActiveRecord::Base.transaction do
@@ -25,6 +32,14 @@ class OrdersController < ApplicationController
                                   :reciver_address,
                                   :reciver_phone,
                                   :total_price, :status
+  end
+
+  def load_order
+    @order = Order.includes(:order_details).find_by id: params[:id]
+    return if @order
+
+    flash[:danger] = t("order_not_found")
+    redirect_to root_url
   end
 
   def logged_in_user

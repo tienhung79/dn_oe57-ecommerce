@@ -99,3 +99,15 @@ h1{
 .h-98 {
   height: 98% !important;
 }
+.btn-base{
+  display: inline-block;
+  border: none;
+  font-size: 12px;
+  background-color: orange;
+  color: white;
+  font-weight: 400;
+  padding: 10px 24px;
+}
+.btn-base:hover {
+  opacity: 0.8;
+}
