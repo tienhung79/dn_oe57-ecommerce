@@ -10,16 +10,15 @@
         <div class="grid">
         <div class="d-flex justify-content-between align-items-center">
           <h1 class="text-danger text-uppercase fw-bold"><%= t("products") %></h1>
-          <%= link_to "Thêm sản phẩm Nam", new_product_path(name: "Nam")%>
-          <%= link_to "Thêm sản phẩm Nữ", new_product_path(name: "Nữ")%>
           <div class="header__mid w-auto">
               <%= form_tag(products_path, method: :get) do %>
-                <%= text_field_tag :name %>
+                <%= text_field_tag :name,  params[:name] %>
                 <%= submit_tag "Search",class: "header_btn_search"  %>
               <% end %>
           </div>
         </div>
           <div class="grid__row">
+            <% if @products.present?%>
             <% @products.each do |product| %>
               <div class="grid__column-1-5">
                   <%= link_to product, class: "text-decoration-none" do %>
@@ -48,6 +47,9 @@
                     </div>
                   <% end %>
               </div>
+            <% end %>
+            <%else%>
+              <%= "Không tìm thấy sản phẩm"%>
             <% end %>
           </div>
             <%== pagy_bootstrap_nav(@pagy) %>

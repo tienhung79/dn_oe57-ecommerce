@@ -7,6 +7,7 @@ class CartController < ApplicationController
   after_action :total_price, only: %i(add_to_cart remove_to_cart
     decrease_quantity_cart increase_quantity_cart)
   before_action :load_product_in_cart, :total_price, only: :index
+  before_action :check_quantity, only: :add_to_cart
 
   def index; end
 
@@ -78,5 +79,12 @@ class CartController < ApplicationController
     return unless session[:cart][@product.id.to_s] == @product.quantity
 
     flash[:warning] = t("invalid_quantity")
+  end
+
+  def check_quantity
+    return if @product.quantity > 0
+
+    flash[:danger] = t("out_of_stock")
+    redirect_to @product
   end
 end

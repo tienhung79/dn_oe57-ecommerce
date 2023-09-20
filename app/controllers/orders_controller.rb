@@ -47,10 +47,14 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit :reciver_name,
-                                  :reciver_address,
-                                  :reciver_phone,
-                                  :total_price, :status
+    extracted_params = params.require(:order).permit(
+      :reciver_name,
+      :reciver_address,
+      :reciver_phone,
+      :status
+    )
+    extracted_params[:total_price] = @total_price
+    return extracted_params
   end
 
   def clear_cart
@@ -58,7 +62,7 @@ class OrdersController < ApplicationController
   end
 
   def load_order
-    @order = Order.includes(:order_details).find_by id: params[:id]
+    @order = Order.includes(:order_details).find_by id: params[:id] || params[:order_id]
     return if @order
 
     flash[:danger] = t("order_not_found")
