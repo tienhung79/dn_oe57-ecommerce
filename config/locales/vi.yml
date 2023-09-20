@@ -41,6 +41,8 @@ vi:
   user_not_found: "Không tìm thấy người dùng"
   rating: "Đánh giá"
   content: "Nội dung đánh giá"
+  not_permission: "Bạn không có quyền"
+  product_updated: "Chỉnh sửa sản phẩm thành công"
   activerecord:
     models:
       order: "Đơn hàng"

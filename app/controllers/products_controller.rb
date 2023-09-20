@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :load_info_categories, only: %i(show index)
-  before_action :load_product, only: %i(show)
-  before_action :admin_user, :load_category, only: %i(new create)
+  before_action :load_info_categories, only: %i(show index new create edit update)
+  before_action :load_product, only: %i(show edit update )
+  before_action :admin_user, only: %i(new create edit update)
 
   def show
     @feedbacks = @product.feedbacks.newest
@@ -9,6 +9,9 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+  end
+
+  def edit
   end
 
   def index
@@ -34,11 +37,20 @@ class ProductsController < ApplicationController
     end
   end
 
+  def update
+    if @product.update product_params
+      flash[:success] = t("product_updated")
+      redirect_to root_url
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def product_params
     params.require(:product).permit(:name, :price,
-                                    :description, :quantity, :rating,:image)
+                                    :description, :quantity, :rating, :image, :category_id)
   end
 
   def search_by_name
@@ -50,7 +62,6 @@ class ProductsController < ApplicationController
   def search_by_category
     @children_categories = Category.find_id_or_parent(params[:id])
     children_category_id = @children_categories.pluck(:id)
-    byebug
     search_results = if @children_categories.length == 1
                        Product.filter_by_category_id(params[:id])
                      else
@@ -85,10 +96,5 @@ class ProductsController < ApplicationController
       redirect_to root_path
       flash[:alert] = t("not_permission")
     end
-  end
-
-  def load_category
-    category_search = Category.search_by_name(params[:name])
-    @category = Category.find_id(category_search.pluck(:id))
   end
 end
