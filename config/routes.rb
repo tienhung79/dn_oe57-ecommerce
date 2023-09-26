@@ -16,4 +16,11 @@ Rails.application.routes.draw do
   get "remove_to_cart", to: "cart#remove_to_cart"
 
   resources :orders
+
+  namespace :admin do
+    resources :orders, only: :index do
+      patch "confirm", to: "orders#confirm"
+      patch "cancel", to: "orders#cancel"
+    end
+  end
 end
