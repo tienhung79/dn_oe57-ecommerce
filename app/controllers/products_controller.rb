@@ -5,21 +5,21 @@ class ProductsController < ApplicationController
   def show; end
 
   def index
-    if params[:name].present?
+    if params[:q].present?
       search_by_name
     elsif params[:id].present?
       search_by_category
     else
       default_search
     end
-    handle_empty_search(@products)
     render "static_pages/home"
   end
 
   private
 
   def search_by_name
-    search_results = Product.search_by_name(params[:name])
+    @q = Product.ransack(params[:q])
+    search_results = @q.result
     @pagy, @products = pagy(search_results,
                             items: Settings.products.number_of_page_10)
   end
@@ -40,10 +40,6 @@ class ProductsController < ApplicationController
     search_results = Product.all
     @pagy, @products = pagy(search_results,
                             items: Settings.products.number_of_page_10)
-  end
-
-  def handle_empty_search search_results
-    flash.now[:notice] = "Không tìm thấy sản phẩm nào." if search_results.empty?
   end
 
   def load_product
