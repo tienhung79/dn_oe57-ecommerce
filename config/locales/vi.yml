@@ -71,3 +71,5 @@ vi:
   orders_management: "Quản lý đơn hàng"
   status: "Trạng thái"
   not_admin: "Bạn không phải là Admin"
+  name_of_product: "Tên sản phẩm"
+  description_of_product: "Mô tả sản phẩm"

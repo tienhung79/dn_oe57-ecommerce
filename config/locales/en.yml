@@ -64,3 +64,5 @@ en:
   order_management: "Order management"
   status: "Status"
   not_admin: "You are not Admin"
+  name_of_product: "Name of Product"
+  description_of_product: "Description of product"

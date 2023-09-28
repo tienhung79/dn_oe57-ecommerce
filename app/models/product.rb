@@ -14,4 +14,7 @@ class Product < ApplicationRecord
   scope :find_id, lambda {|id|
                     where(id:)
                   }
+  def self.ransackable_attributes _auth_object = nil
+    %w(name description)
+  end
 end
