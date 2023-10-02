@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative '../../spec/support/share_example'
 
 RSpec.describe OrdersController, type: :controller do
   let!(:user) { create(:user) }
@@ -14,7 +15,7 @@ RSpec.describe OrdersController, type: :controller do
       $product = Product.find_by id: session[:cart].keys
       $quantity_product_in_order = session[:cart]["476"]
     end
-
+    
     context "create success" do
       before do
           session[:user_id] = user.id
@@ -32,6 +33,8 @@ RSpec.describe OrdersController, type: :controller do
       it "redirect root path" do
         expect(response).to redirect_to(root_path)
       end
+
+      it_behaves_like "successful login"
 
       context "check data in database" do
         it "insert record order table" do
@@ -58,13 +61,7 @@ RSpec.describe OrdersController, type: :controller do
           post :create, params: invalid_params
         end
 
-        it "render flash danger" do
-          expect(flash[:danger]).to eq(I18n.t("please_log_in"))
-        end
-
-        it "redirect to login url" do
-          expect(response).to redirect_to(login_url)
-        end
+        it_behaves_like "request login for function"
       end
 
       context "params invalid" do
