@@ -15,7 +15,14 @@
           </div>
         </div>
           <div class="grid__row">
-            <%= render "static_pages/display_product"%>
+            <% if !@products.empty?%>
+            <%= render(partial: "static_pages/display_product", collection: @products, as: :product) %>
+            </div>
+              <%== pagy_bootstrap_nav(@pagy) %>
+            </div>
+          <%else%>
+            <%= "Không tìm thấy sản phẩm"%>
+          <% end %>
         </div>
       </div>
     </div>
